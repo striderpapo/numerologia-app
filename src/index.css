@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Contenedor principal */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+}
+
+
+/* Tarjeta */
+.login-card {
+  width: 350px;
+  padding: 40px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+/* Títulos */
+.login-card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-card h2 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+
+/* Formulario */
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* Campos */
+.login-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+
+.login-card input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+
+/* Botón */
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.login-card button:hover {
+  opacity: .85;
+}
