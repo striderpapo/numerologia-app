@@ -24,7 +24,7 @@ export default function Login() {
   e.preventDefault();
 
   const correoCorrecto = "admin@numerologia.com";
-  const passwordCorrecto = "123456";
+  const passwordCorrecto = "123demonumerologia456";
 
 
   if (email === correoCorrecto && password === passwordCorrecto) {
