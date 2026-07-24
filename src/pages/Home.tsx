@@ -1,4 +1,4 @@
-import { useState,useRef ,useEffect  } from 'react';
+import { useState } from 'react';
 import "./Home.css";
 export default function Home() {
 const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readData())
@@ -6,7 +6,7 @@ const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readD
     const [mes, setMes] = useState("");
     const [anio, setAnio] = useState("");
 
-    const [operacion, setOperacion] = useState("");
+   // const [operacion, setOperacion] = useState("");
     //const [resultado, setResultado] = useState(0);
     //const [pasos, setPasos] = useState<string[]>([]);
     const [caminoVida, setCaminoVida] = useState({
