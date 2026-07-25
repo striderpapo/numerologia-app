@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect  } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -20,6 +20,12 @@ export default function Login() {
     navigate("/home");
   };*/
 
+  useEffect(() => {
+  if (localStorage.getItem("isAuthenticated") === "true") {
+    navigate("/home", { replace: true });
+  }
+}, [navigate]);
+
   const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
 
@@ -28,7 +34,7 @@ export default function Login() {
 
 
   if (email === correoCorrecto && password === passwordCorrecto) {
-
+    localStorage.setItem("isAuthenticated", "true");
     navigate("/home");
 
   } else {
