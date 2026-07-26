@@ -8,7 +8,7 @@
 
     display:flex;
     justify-content:center;
-    margin-top:50px;
+    margin-top:40px;
 
 }
 
@@ -55,9 +55,17 @@
 .encabezado > div:nth-child(1){
 
     background:#7A197A;
-
+    color:white;
+        display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.encabezado > div:nth-child(3){
+        display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .encabezado div{
 
@@ -161,3 +169,17 @@
     margin-top:20px;
     text-align:center;
 }
+
+
+
+@media (max-width: 768px) {
+
+    .card{
+    padding: 2vh 0vh 0vh 0vh;
+    }
+
+    .encabezado div {
+    padding: 2vh 1vh 2vh 1vh;
+}
+}
+
