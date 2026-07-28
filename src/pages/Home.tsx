@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import "./Home.css";
+import { significadoCaminoVida } from "../numerology/caminoVida";
+
 export default function Home() {
-const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readData())
-    const [dia, setDia] = useState("");
-    const [mes, setMes] = useState("");
-    const [anio, setAnio] = useState("");
+//const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readData())
+const [formulaActiva, setFormulaActiva] = useState<string | null>(null);  
+const [dia, setDia] = useState("");
+const [mes, setMes] = useState("");
+const [anio, setAnio] = useState("");
 
    // const [operacion, setOperacion] = useState("");
     //const [resultado, setResultado] = useState(0);
@@ -14,6 +17,8 @@ const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readD
   resultado: "-",
   pasos: [] as string[],
 });
+const significado =
+  significadoCaminoVida[Number(caminoVida.resultado)];
 
 const reducirNumero = (numero: number) => {
 
@@ -79,21 +84,25 @@ const calcular = () => {
         </div>
 
         <div className="fila vida">
-          <button onClick={() => setMostrarCaminoVida(!mostrarCaminoVida)}>Camino de Vida</button>
+          <button  onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "caminoVida" ? null : "caminoVida"
+    )
+  }>Camino de Vida</button>
        <span>{caminoVida.suma}</span>
 <span>{caminoVida.resultado}</span>
         </div>
-         {mostrarCaminoVida && (
+         {formulaActiva === "caminoVida" && (
             <div className="fila-formulario">
               <div className="controles">
               <input maxLength={2}  
-              placeholder="DD"   
+              placeholder="DÍA"   
               inputMode="numeric"
               onChange={(e) => setDia(e.target.value.replace(/\D/g, ""))}
               />
-              <input maxLength={2} placeholder="MM" inputMode="numeric" 
+              <input maxLength={2} placeholder="MES" inputMode="numeric" 
               onChange={(e) => setMes(e.target.value.replace(/\D/g, ""))}/>
-              <input maxLength={4} placeholder="YYYY" inputMode="numeric" 
+              <input maxLength={4} placeholder="AÑO" inputMode="numeric" 
               onChange={(e) => setAnio(e.target.value.replace(/\D/g, ""))}/>
 
               <button onClick={calcular}>Calcular</button>
@@ -103,45 +112,188 @@ const calcular = () => {
   <p key={index}>{paso}</p>
 ))}
 
-<h3>Resultado Final: {caminoVida.resultado}</h3>
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>
             </div>
-          )}
+          )
+}
 
         <div className="fila mision">
-          <button>Misión Cósmica</button>
+          <button onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "misionCosmica" ? null : "misionCosmica"
+    )
+  }>Misión Cósmica</button>
           <span>-</span>
           <span>-</span>
         </div>
+                 {formulaActiva === "misionCosmica" && (
+            <div className="fila-formulario">
+              <div className="controles">
+        <h3>Misión Cósmica en construccion...</h3>
+              </div>
+              {/* <p>{operacion} = {resultado}</p> 
+  {caminoVida.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>*/}
+            </div>
+          )
+}
 
         <div className="fila alma">
-          <button>Número de Alma</button>
+          <button onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "numeroAlma" ? null : "numeroAlma"
+    )
+  }>Número de Alma</button>
           <span>-</span>
           <span>-</span>
         </div>
+
+{formulaActiva === "numeroAlma" && (
+            <div className="fila-formulario">
+              <div className="controles">
+        <h3>Número de Alma en construccion...</h3>
+              </div>
+              {/* <p>{operacion} = {resultado}</p> 
+  {caminoVida.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>*/}
+            </div>
+          )
+}
+
+
 
         <div className="fila personalidad">
-          <button>Número de Personalidad</button>
+          <button onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "numeroPersonalidad" ? null : "numeroPersonalidad"
+    )
+  }>Número de Personalidad</button>
           <span>-</span>
           <span>-</span>
         </div>
+
+{formulaActiva === "numeroPersonalidad" && (
+            <div className="fila-formulario">
+              <div className="controles">
+        <h3>Número de Personalidad en construccion...</h3>
+              </div>
+              {/* <p>{operacion} = {resultado}</p> 
+  {caminoVida.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>*/}
+            </div>
+          )
+}
+
 
         <div className="fila expresion">
-          <button>Número de Expresión</button>
+          <button onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "numeroExpresion" ? null : "numeroExpresion"
+    )
+  }>Número de Expresión</button>
           <span>-</span>
           <span>-</span>
         </div>
+
+{formulaActiva === "numeroExpresion" && (
+            <div className="fila-formulario">
+              <div className="controles">
+        <h3>Número de Expresión en construccion...</h3>
+              </div>
+              {/* <p>{operacion} = {resultado}</p> 
+  {caminoVida.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>*/}
+            </div>
+          )
+}
+
+
 
         <div className="fila equilibrio">
-          <button>Número de Equilibrio</button>
+          <button onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "numeroEquilibrio" ? null : "numeroEquilibrio"
+    )
+  }>Número de Equilibrio</button>
           <span>-</span>
           <span>-</span>
         </div>
 
+{formulaActiva === "numeroEquilibrio" && (
+            <div className="fila-formulario">
+              <div className="controles">
+        <h3>Número de Equilibrio en construccion...</h3>
+              </div>
+              {/* <p>{operacion} = {resultado}</p> 
+  {caminoVida.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>*/}
+            </div>
+          )
+}
+
+
         <div className="fila fuerza">
-          <button>Número de Fuerza</button>
+          <button onClick={() =>
+    setFormulaActiva(
+      formulaActiva === "numeroFuerza" ? null : "numeroFuerza"
+    )
+  }>Número de Fuerza</button>
           <span>-</span>
           <span>-</span>
         </div>
+
+        {formulaActiva === "numeroFuerza" && (
+            <div className="fila-formulario">
+              <div className="controles">
+        <h3>Número de Fuerza en construccion...</h3>
+              </div>
+              {/* <p>{operacion} = {resultado}</p> 
+  {caminoVida.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final: </h3>
+<h3 className="resultado-final">{caminoVida.resultado}</h3>
+<h3>Significado</h3>
+    <p>{significado}</p>*/}
+            </div>
+          )
+}
+
+
 
       </div>
 

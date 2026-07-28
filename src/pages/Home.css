@@ -146,6 +146,11 @@
     justify-content: space-around;*/
 }
 
+.resultado-final{
+    font-size: 7vh;
+    text-align: center;
+}
+
 
 .controles{
     display:flex;
