@@ -162,12 +162,22 @@
    width: 16%;
    height: 30px;
    font-size: 18px;
+   border: 1px solid #cfcfcf;
+    border-radius: 12px;
+    border-top: 4px solid #7A197A;
+    border-left: 1.5px solid #7A197A;
+    border-right: 1.5px solid #7A197A;
+    border-bottom: 4px solid #7A197A;
+    outline: none;
+    transition: .2s;
+    padding: 0.5vh;
 }
 
 .fila-formulario button{
     color: white;
     background: #7A197A;
     padding: 10px;
+    border-radius: 3vh;
 }
 
 .fila-formulario p{
@@ -176,6 +186,73 @@
 }
 
 
+/* mision cosmica */
+.controles-cosmica input{
+    border-top: 4px solid #315296;
+    border-left: 1.5px solid #315296;
+    border-right: 1.5px solid #315296;
+    border-bottom: 4px solid #315296;
+   
+}
+.input-cosmica-zone{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+.inputs-cosmica{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.inputs-cosmica input{
+    width: 30%;
+    height: 30px;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.button-cosmica{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.button-cosmica button{
+    text-align: center;
+    color: white;
+    background: #315296;
+    padding: 10px;
+    border-radius: 3vh;
+    width: 30%;
+}
+
+.referencia-letras{
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.referencia-item{
+    flex: 1;
+    min-width: 70px;
+    text-align: center;
+}
+
+.valor{
+    font-size: 22px;
+    font-weight: bold;
+    color: #315296;
+    border-bottom: 2px solid #315296;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.letras{
+    font-size: 15px;
+    letter-spacing: 2px;
+}
 
 @media (max-width: 768px) {
 
@@ -186,5 +263,15 @@
     .encabezado div {
     padding: 2vh 1vh 2vh 1vh;
 }
+
+.inputs-cosmica{
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs-cosmica input{
+  width: 80% !important;
+}
+
 }
 

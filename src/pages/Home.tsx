@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import "./Home.css";
 import { significadoCaminoVida } from "../numerology/caminoVida";
+import { valoresLetras } from "../numerology/tablaLetras";
 
 export default function Home() {
 //const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readData())
@@ -8,11 +9,10 @@ const [formulaActiva, setFormulaActiva] = useState<string | null>(null);
 const [dia, setDia] = useState("");
 const [mes, setMes] = useState("");
 const [anio, setAnio] = useState("");
-
-   // const [operacion, setOperacion] = useState("");
-    //const [resultado, setResultado] = useState(0);
-    //const [pasos, setPasos] = useState<string[]>([]);
-    const [caminoVida, setCaminoVida] = useState({
+const [nombre, setNombre] = useState("");
+const [apellidoPaterno, setApellidoPaterno] = useState("");
+const [apellidoMaterno, setApellidoMaterno] = useState("");
+const [caminoVida, setCaminoVida] = useState({
   suma: "-",
   resultado: "-",
   pasos: [] as string[],
@@ -21,8 +21,7 @@ const significado =
   significadoCaminoVida[Number(caminoVida.resultado)];
 
 const reducirNumero = (numero: number) => {
-
-  const historial: string[] = [];
+const historial: string[] = [];
 
   while (numero > 9 && numero !== 11 && numero !== 22 && numero !== 33) {
 
@@ -69,6 +68,19 @@ const calcular = () => {
   });
 
 };
+
+const tabla = Object.entries(valoresLetras).reduce(
+  (acc, [letra, valor]) => {
+    if (!acc[valor]) {
+      acc[valor] = [];
+    }
+
+    acc[valor].push(letra);
+
+    return acc;
+  },
+  {} as Record<number, string[]>
+);
 
   return (
     <div className="contenedor">
@@ -131,8 +143,44 @@ const calcular = () => {
         </div>
                  {formulaActiva === "misionCosmica" && (
             <div className="fila-formulario">
-              <div className="controles">
-        <h3>Misión Cósmica en construccion...</h3>
+              <div className="controles-cosmica">
+                <div className="referencia-letras">
+<div className="referencia-letras">
+  {Object.entries(tabla).map(([valor, letras]) => (
+    <div key={valor} className="referencia-item">
+      <div className="valor">{valor}</div>
+      <div className="letras">{letras.join(" ")}</div>
+    </div>
+  ))}
+</div>
+</div>
+<div className="input-cosmica-zone">
+  <div className="inputs-cosmica">
+      <input
+  type="text"
+  placeholder="Nombre(s)"
+  value={nombre}
+  onChange={(e) => setNombre(e.target.value)}
+/>
+
+<input
+  type="text"
+  placeholder="Apellido paterno"
+  value={apellidoPaterno}
+  onChange={(e) => setApellidoPaterno(e.target.value)}
+/>
+
+<input
+  type="text"
+  placeholder="Apellido materno"
+  value={apellidoMaterno}
+  onChange={(e) => setApellidoMaterno(e.target.value)}
+/>
+</div>
+  <div className="button-cosmica">
+    <button onClick={calcular}>Calcular</button>
+  </div>
+</div>
               </div>
               {/* <p>{operacion} = {resultado}</p> 
   {caminoVida.pasos.map((paso, index) => (
