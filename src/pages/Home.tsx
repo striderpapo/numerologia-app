@@ -194,8 +194,8 @@ const calcularMisionCosmica = () => {
       formulaActiva === "misionCosmica" ? null : "misionCosmica"
     )
   }>Misión Cósmica</button>
-          <span>-</span>
-          <span>-</span>
+             <span>{misionCosmica.suma}</span>
+             <span>{misionCosmica.resultado}</span>
         </div>
                  {formulaActiva === "misionCosmica" && (
             <div className="fila-formulario">
