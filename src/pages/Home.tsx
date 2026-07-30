@@ -17,8 +17,17 @@ const [caminoVida, setCaminoVida] = useState({
   resultado: "-",
   pasos: [] as string[],
 });
+const [misionCosmica, setMisionCosmica] = useState({
+  suma: "-",
+  resultado: "-",
+  operacion: "",
+  pasos: [] as string[],
+});
 const significado =
   significadoCaminoVida[Number(caminoVida.resultado)];
+
+const significadoMision =
+  significadoCaminoVida[Number(misionCosmica.resultado)];
 
 const reducirNumero = (numero: number) => {
 const historial: string[] = [];
@@ -81,6 +90,53 @@ const tabla = Object.entries(valoresLetras).reduce(
   },
   {} as Record<number, string[]>
 );
+
+ const calcularNombre = (nombreCompleto: string) => {
+
+  nombreCompleto = nombreCompleto
+    .toUpperCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  let suma = 0;
+  const operaciones: string[] = [];
+
+  for (const letra of nombreCompleto) {
+
+    if (letra === " ") continue;
+
+    const valor = valoresLetras[letra];
+
+    if (valor !== undefined) {
+      suma += valor;
+      operaciones.push(`${letra}=${valor}`);
+    }
+
+  }
+
+  return {
+    suma,
+    operacion: operaciones.join(" + ")
+  };
+};
+
+const calcularMisionCosmica = () => {
+
+  const nombreCompleto =
+    `${nombre} ${apellidoPaterno} ${apellidoMaterno}`;
+
+  const datos = calcularNombre(nombreCompleto);
+
+  const reduccion = reducirNumero(datos.suma);
+
+  setMisionCosmica({
+    suma: datos.suma.toString(),
+    resultado: reduccion.resultadoFinal.toString(),
+    operacion: datos.operacion,
+    pasos: reduccion.pasos,
+  });
+
+};
 
   return (
     <div className="contenedor">
@@ -178,7 +234,7 @@ const tabla = Object.entries(valoresLetras).reduce(
 />
 </div>
   <div className="button-cosmica">
-    <button onClick={calcular}>Calcular</button>
+    <button onClick={calcularMisionCosmica}>Calcular</button>
   </div>
 </div>
               </div>
@@ -191,6 +247,21 @@ const tabla = Object.entries(valoresLetras).reduce(
 <h3 className="resultado-final">{caminoVida.resultado}</h3>
 <h3>Significado</h3>
     <p>{significado}</p>*/}
+    <p>{misionCosmica.operacion} = {misionCosmica.suma}</p>
+
+{misionCosmica.pasos.map((paso, index) => (
+  <p key={index}>{paso}</p>
+))}
+
+<h3>Resultado Final:</h3>
+<h3 className="resultado-final">
+  {misionCosmica.resultado}
+</h3>
+
+<h3>Significado</h3>
+<p>
+  {significadoMision}
+</p>
             </div>
           )
 }
