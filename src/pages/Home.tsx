@@ -2,6 +2,8 @@ import { useState } from 'react';
 import "./Home.css";
 import { significadoCaminoVida } from "../numerology/caminoVida";
 import { valoresLetras } from "../numerology/tablaLetras";
+import { generarCarta } from "../pdf/CartaNumerologica";
+
 
 export default function Home() {
 //const [mostrarCaminoVida, setMostrarCaminoVida]=useState<boolean>(false)//(readData())
@@ -15,6 +17,7 @@ const [apellidoMaterno, setApellidoMaterno] = useState("");
 const [caminoVida, setCaminoVida] = useState({
   suma: "-",
   resultado: "-",
+  operacion: "",
   pasos: [] as string[],
 });
 const [misionCosmica, setMisionCosmica] = useState({
@@ -73,6 +76,7 @@ const calcular = () => {
   setCaminoVida({
     suma: suma.toString(),
     resultado: reduccion.resultadoFinal.toString(),
+    operacion: `${numeros.join(" + ")} = ${suma}`,
     pasos: [...historial, ...reduccion.pasos],
   });
 
@@ -412,10 +416,19 @@ const calcularMisionCosmica = () => {
           )
 }
 
-
-
+<div className="button-pdf">
+<button   onClick={() =>
+    generarCarta({
+      nombre: `${nombre} ${apellidoPaterno} ${apellidoMaterno}`,
+      fechaNacimiento: `${dia}/${mes}/${anio}`,
+      caminoVida,
+      misionCosmica,
+    })
+  }>
+    Generar PDF
+</button>
+</div>
       </div>
-
     </div>
   );
 }

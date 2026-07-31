@@ -254,6 +254,20 @@
     letter-spacing: 2px;
 }
 
+.button-pdf{
+    padding: 4vh;
+    text-align: center;
+}
+
+.button-pdf button{
+    text-align: center;
+    color: white;
+    background: #7A197A;
+    padding: 10px;
+    border-radius: 3vh;
+    width: 30%;
+}
+
 @media (max-width: 768px) {
 
     .card{
